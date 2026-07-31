@@ -20,7 +20,6 @@ print("------user input section-------");
 student_graph={}
 
 num_edges=int(input("how many edges (connection) does your graph have "))
-num_edges = int(input("How many edges (connections) does your graph have? "))
 
 for i in range(num_edges):
     u = input(f"Enter starting node of edge {i+1}: ")
@@ -34,8 +33,8 @@ for i in range(num_edges):
     student_graph[v].append(u)
 
 start =input("enter the starting node for bfs : ")
-print(f"\n YOUR GRAPH DICTIONARY : {student_graph}")
-
 print(f"\n Your graph dictionary : {student_graph}")
-print("starting BFS Traversal....")
+print("Your graph dictionary  starting BFS Traversal....")
+result = bfs(student_graph, start)
+print("\nBFS Traversal:", result)
 

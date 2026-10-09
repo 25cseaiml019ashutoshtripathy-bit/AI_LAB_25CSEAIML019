@@ -1,0 +1,40 @@
+def bfs(graph,start_node):
+    visited= []
+    stack =[start_node]
+
+    while stack :
+        current_node =stack.pop()
+
+        if current_node not in visited :
+            print(f"exploring node : { current_node}")
+            visited.append(current_node)
+
+            # .get() prevent errors if a node has no outgoing edges 
+            for neighbor in graph.get(current_node,[]):
+                if neighbor not in visited and neighbor not in stack:
+                      stack.append(neighbor)
+
+    return visited
+
+print("------user input section-------");
+student_graph={}
+
+num_edges=int(input("how many edges (connection) does your graph have "))
+
+for i in range(num_edges):
+    u = input(f"Enter starting node of edge {i+1}: ")
+    v = input(f"Enter ending node of edge {i+1}: ")
+
+    if u not in student_graph:
+        student_graph[u]=[]
+    if v not in student_graph :
+        student_graph[v]=[] 
+    student_graph[u].append(v)
+    student_graph[v].append(u)
+
+start =input("enter the starting node for bfs : ")
+print(f"\n Your graph dictionary : {student_graph}")
+print("Your graph dictionary  starting BFS Traversal....")
+result = bfs(student_graph, start)
+print("\nBFS Traversal:", result)
+
